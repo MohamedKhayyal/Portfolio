@@ -1,3 +1,5 @@
+import { useEffect } from 'react'
+
 const skillGroups = [
   {
     title: 'Frontend',
@@ -9,7 +11,7 @@ const skillGroups = [
   },
   {
     title: 'Database',
-    items: ['MongoDB', 'Mongoose', 'Redis', 'Firebase'],
+    items: ['MongoDB', 'Mongoose', 'Firebase', 'SQL'],
   },
   {
     title: 'Workflow',
@@ -22,26 +24,54 @@ const projects = [
     name: 'Medico',
     description:
       'Medical web application focused on clean UI and practical healthcare workflows.',
-    stack: 'React • Firebase',
+    stack: 'React | Firebase',
     link: 'https://medico-brown-six.vercel.app/',
   },
   {
     name: 'Games4U',
     description:
       'Gaming platform with complete MERN architecture and dynamic full-stack features.',
-    stack: 'MongoDB • Express • React • Node.js',
+    stack: 'MongoDB | Express | React | Node.js',
     link: 'https://github.com/MohamedKhayyal/Games4U',
   },
   {
     name: 'CLYNK',
     description:
       'Graduation project with backend services and relational data management.',
-    stack: 'Express • SQL',
+    stack: 'Express | SQL',
     link: 'https://github.com/MohamedKhayyal/CLYNK',
   },
 ]
 
+const aboutHighlights = [
+  'Build full-stack web apps from idea to deployment.',
+  'Focus on clean UI, performance, and scalable backend design.',
+  'Comfortable with MERN, Firebase integrations, and SQL data modeling.',
+]
+
 function App() {
+  useEffect(() => {
+    const elements = document.querySelectorAll<HTMLElement>('.reveal')
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('in-view')
+            observer.unobserve(entry.target)
+          }
+        })
+      },
+      {
+        threshold: 0.15,
+        rootMargin: '0px 0px -8% 0px',
+      },
+    )
+
+    elements.forEach((element) => observer.observe(element))
+
+    return () => observer.disconnect()
+  }, [])
+
   return (
     <>
       <header className="navbar">
@@ -50,6 +80,7 @@ function App() {
         </a>
         <nav>
           <a href="#home">Home</a>
+          <a href="#about">About</a>
           <a href="#skills">Skills</a>
           <a href="#projects">Projects</a>
           <a href="#contact">Contact</a>
@@ -58,15 +89,17 @@ function App() {
 
       <main>
         <section id="home" className="hero section">
-          <div className="hero-copy reveal delay-1">
-            <p className="eyebrow">FULL STACK MERN DEVELOPER</p>
-            <h1>Building modern, fast, and scalable web applications.</h1>
-            <p className="lead">
+          <div className="hero-copy">
+            <p className="eyebrow reveal delay-1">FULL STACK MERN DEVELOPER</p>
+            <h1 className="hero-title reveal delay-2">
+              Building modern, fast, and scalable web applications.
+            </h1>
+            <p className="lead reveal delay-3">
               I design and develop end-to-end products using MongoDB, Express,
               React, and Node.js with a strong focus on performance and user
               experience.
             </p>
-            <div className="hero-actions">
+            <div className="hero-actions reveal delay-3">
               <a
                 href="https://github.com/MohamedKhayyal"
                 className="btn btn-primary"
@@ -80,15 +113,15 @@ function App() {
               </a>
             </div>
             <div className="quick-stats">
-              <article>
+              <article className="reveal delay-1">
                 <h3>20+</h3>
                 <p>Completed Projects</p>
               </article>
-              <article>
+              <article className="reveal delay-2">
                 <h3>1+</h3>
                 <p>Years Experience</p>
               </article>
-              <article>
+              <article className="reveal delay-3">
                 <h3>100%</h3>
                 <p>Client Focus</p>
               </article>
@@ -105,6 +138,25 @@ function App() {
                 }}
               />
             </div>
+          </div>
+        </section>
+
+        <section id="about" className="section">
+          <p className="section-tag reveal">About</p>
+          <h2 className="section-title reveal delay-1">About Me</h2>
+          <div className="about-panel reveal delay-2">
+            <p>
+              I am Mohamed Khayal, a full stack developer specialized in MERN
+              stack applications. I enjoy building products that solve real
+              problems with solid architecture and a modern user experience.
+            </p>
+            <ul className="about-list">
+              {aboutHighlights.map((item, index) => (
+                <li className={`reveal delay-${(index % 3) + 1}`} key={item}>
+                  {item}
+                </li>
+              ))}
+            </ul>
           </div>
         </section>
 
@@ -136,7 +188,7 @@ function App() {
           <div className="projects-grid">
             {projects.map((project, index) => (
               <article
-                className={`project-card reveal delay-${(index % 3) + 1}`}
+                className={`project-card project-live reveal delay-${(index % 3) + 1}`}
                 key={project.name}
               >
                 <h3>{project.name}</h3>
@@ -171,7 +223,6 @@ function App() {
             href="mailto:khayyalmohamed5@gmail.com"
           >
             khayyalmohamed5@gmail.com
-
           </a>
         </section>
       </main>
