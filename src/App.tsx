@@ -101,7 +101,7 @@ function App() {
                 src="/profile.jpg"
                 alt="Developer portrait"
                 onError={(event) => {
-                  event.currentTarget.src = '../public/user-2.jpeg'
+                  event.currentTarget.src = '../user-2.jpeg'
                 }}
               />
             </div>
