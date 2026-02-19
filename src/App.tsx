@@ -1,76 +1,83 @@
-import { useEffect } from 'react'
+import { useEffect } from "react";
 
 const skillGroups = [
   {
-    title: 'Frontend',
-    items: ['React', 'Next.js', 'TypeScript', 'Tailwind CSS'],
+    title: "Frontend",
+    items: [
+      "React",
+      "Next.js",
+      "TypeScript",
+      "Tailwind CSS",
+      "HTML/CSS",
+      "JavaScript",
+    ],
   },
   {
-    title: 'Backend',
-    items: ['Node.js', 'Express.js', 'REST APIs', 'JWT Auth'],
+    title: "Backend",
+    items: ["Node.js", "Express.js", "REST APIs", "JWT Auth"],
   },
   {
-    title: 'Database',
-    items: ['MongoDB', 'Mongoose', 'Firebase', 'SQL'],
+    title: "Database",
+    items: ["MongoDB", "Mongoose", "Firebase", "SQL"],
   },
   {
-    title: 'Workflow',
-    items: ['Git/GitHub', 'Docker', 'CI/CD', 'Agile Scrum'],
+    title: "Workflow",
+    items: ["Git/GitHub"],
   },
-]
+];
 
 const projects = [
   {
-    name: 'Medico',
+    name: "Medico",
     description:
-      'Medical web application focused on clean UI and practical healthcare workflows.',
-    stack: 'React | Firebase',
-    link: 'https://medico-brown-six.vercel.app/',
+      "Medical web application focused on clean UI and practical healthcare workflows.",
+    stack: "React | Firebase",
+    link: "https://medico-brown-six.vercel.app/",
   },
   {
-    name: 'Games4U',
+    name: "Games4U",
     description:
-      'Gaming platform with complete MERN architecture and dynamic full-stack features.',
-    stack: 'MongoDB | Express | React | Node.js',
-    link: 'https://github.com/MohamedKhayyal/Games4U',
+      "Gaming platform with complete MERN architecture and dynamic full-stack features.",
+    stack: "MongoDB | Express | React | Node.js",
+    link: "https://github.com/MohamedKhayyal/Games4U",
   },
   {
-    name: 'CLYNK',
+    name: "CLYNK",
     description:
-      'Graduation project with backend services and relational data management.',
-    stack: 'Express | SQL',
-    link: 'https://github.com/MohamedKhayyal/CLYNK',
+      "Graduation project with backend services and relational data management.",
+    stack: "Express | SQL",
+    link: "https://github.com/MohamedKhayyal/CLYNK",
   },
-]
+];
 
 const aboutHighlights = [
-  'Build full-stack web apps from idea to deployment.',
-  'Focus on clean UI, performance, and scalable backend design.',
-  'Comfortable with MERN, Firebase integrations, and SQL data modeling.',
-]
+  "Build full-stack web apps from idea to deployment.",
+  "Focus on clean UI, performance, and scalable backend design.",
+  "Comfortable with MERN, Firebase integrations, and SQL data modeling.",
+];
 
 function App() {
   useEffect(() => {
-    const elements = document.querySelectorAll<HTMLElement>('.reveal')
+    const elements = document.querySelectorAll<HTMLElement>(".reveal");
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            entry.target.classList.add('in-view')
-            observer.unobserve(entry.target)
+            entry.target.classList.add("in-view");
+            observer.unobserve(entry.target);
           }
-        })
+        });
       },
       {
         threshold: 0.15,
-        rootMargin: '0px 0px -8% 0px',
+        rootMargin: "0px 0px -8% 0px",
       },
-    )
+    );
 
-    elements.forEach((element) => observer.observe(element))
+    elements.forEach((element) => observer.observe(element));
 
-    return () => observer.disconnect()
-  }, [])
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <>
@@ -134,7 +141,7 @@ function App() {
                 src="/profile.jpg"
                 alt="Developer portrait"
                 onError={(event) => {
-                  event.currentTarget.src = '../user-2.jpeg'
+                  event.currentTarget.src = "../user-2.jpeg";
                 }}
               />
             </div>
@@ -162,7 +169,9 @@ function App() {
 
         <section id="skills" className="section">
           <p className="section-tag reveal">Skills</p>
-          <h2 className="section-title reveal delay-1">MERN + Modern Tooling</h2>
+          <h2 className="section-title reveal delay-1">
+            MERN + Modern Tooling
+          </h2>
           <div className="skills-grid">
             {skillGroups.map((group, index) => (
               <article
@@ -227,7 +236,7 @@ function App() {
         </section>
       </main>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
