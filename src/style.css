@@ -321,6 +321,7 @@ h1 {
   );
   opacity: 0;
   transform: rotate(16deg);
+  pointer-events: none;
 }
 
 .project-live.in-view::before {

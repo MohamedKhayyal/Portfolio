@@ -205,7 +205,7 @@ function App() {
                 <span>{project.stack}</span>
                 <p>
                   <a
-                    className="project-link"
+                    className="project-link btn btn-secondary"
                     href={project.link}
                     target="_blank"
                     rel="noopener noreferrer"
